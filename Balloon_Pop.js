@@ -1374,8 +1374,9 @@ export class Balloon_Pop extends Scene {
             this.shapes.powerup_throw.set_string("Throw Tier:" + String(this.shootCooldownTier + 1), context.context)
             this.shapes.powerup_multishot.set_string("Multishot:" + (this.ownsMultishot ? (this.multishot ? "On" : "Off") : "$500"), context.context)
             this.shapes.crosshair.set_string("+", context.context);
-            const mat = Mat4.translation(...origin).times(camera_matrix).times(Mat4.scale(0.01, 0.01, 0.01))
+            const mat = Mat4.translation(...origin).times(camera_matrix).times(Mat4.scale(0.01, 0.01, 0.01))//.times(Mat4.scale(0.7, 0.7, 0.7))
             let lookDirection;
+            
 
             if (this.game_over)
             {
@@ -1395,53 +1396,53 @@ export class Balloon_Pop extends Scene {
             lookDirection = camera_matrix.times(vec4(0, 0, -0.6, 0))
             this.shapes.crosshair.draw(context, program_state, Mat4.translation(...lookDirection).times(mat), this.materials.text)
 
-            lookDirection = camera_matrix.times(vec4(context.width * 0.00020, 0.23, -0.6, 0))
+            lookDirection = camera_matrix.times(vec4(-context.width * 0.00027, 0.23, -0.6, 0))
             this.shapes.money.draw(context, program_state, Mat4.translation(...lookDirection).times(mat), this.materials.text )
 
-            lookDirection = camera_matrix.times(vec4(context.width * 0.00020, 0.2, -0.6, 0))
+            lookDirection = camera_matrix.times(vec4(-context.width * 0.00027, 0.2, -0.6, 0))
             this.shapes.health.draw(context, program_state, Mat4.translation(...lookDirection).times(mat), this.materials.text )
 
-            lookDirection = camera_matrix.times(vec4(context.width * 0.00020, 0.17, -0.6, 0))
+            lookDirection = camera_matrix.times(vec4(-context.width * 0.00027, 0.17, -0.6, 0))
             this.shapes.round.draw(context, program_state, Mat4.translation(...lookDirection).times(mat), this.materials.text )
             if (!this.fullHUD)
                 return;
 
             let currY = 0.14
-            lookDirection = camera_matrix.times(vec4(context.width * 0.00020, currY, -0.6, 0))
+            lookDirection = camera_matrix.times(vec4(-context.width * 0.00027, currY, -0.6, 0))
             this.shapes.powerup_multishot.draw(context, program_state, Mat4.translation(...lookDirection).times(mat).times(Mat4.scale(0.9, 0.9, 0.9)), this.materials.text )
 
             currY -= 0.03;
 
-            lookDirection = camera_matrix.times(vec4(context.width * 0.00020, currY, -0.6, 0))
+            lookDirection = camera_matrix.times(vec4(-context.width * 0.00027, currY, -0.6, 0))
             this.shapes.powerup_pierce.draw(context, program_state, Mat4.translation(...lookDirection).times(mat).times(Mat4.scale(0.9, 0.9, 0.9)), this.materials.text )
             currY -= 0.03
 
             if (this.projectilePierceTier != this.projectilePiercePrices.length)
             {
                 this.shapes.pierce_price.set_string("Next Tier:$" + String(this.projectilePiercePrices[this.projectilePierceTier]), context.context)
-                lookDirection = camera_matrix.times(vec4(context.width * 0.00022, currY, -0.6, 0))
+                lookDirection = camera_matrix.times(vec4(-context.width * 0.00025, currY, -0.6, 0))
                 this.shapes.pierce_price.draw(context, program_state, Mat4.translation(...lookDirection).times(mat).times(Mat4.scale(0.8, 0.8, 0.8)), this.materials.text )
                 currY -= 0.03;
             }
 
-            lookDirection = camera_matrix.times(vec4(context.width * 0.00020, currY, -0.6, 0))
+            lookDirection = camera_matrix.times(vec4(-context.width * 0.00027, currY, -0.6, 0))
             this.shapes.powerup_speed.draw(context, program_state, Mat4.translation(...lookDirection).times(mat).times(Mat4.scale(0.9, 0.9, 0.9)), this.materials.text )
             currY -= 0.03;
             if (this.projectileSpeedTier != this.projectileSpeedPrices.length)
             {
                 this.shapes.speed_price.set_string("Next Tier:$" + String(this.projectileSpeedPrices[this.projectileSpeedTier]), context.context)
-                lookDirection = camera_matrix.times(vec4(context.width * 0.00022, currY, -0.6, 0))
+                lookDirection = camera_matrix.times(vec4(-context.width * 0.00025, currY, -0.6, 0))
                 this.shapes.speed_price.draw(context, program_state, Mat4.translation(...lookDirection).times(mat).times(Mat4.scale(0.8, 0.8, 0.8)), this.materials.text )
                 currY -= 0.03;
             }
 
-            lookDirection = camera_matrix.times(vec4(context.width * 0.00020, currY, -0.6, 0))
+            lookDirection = camera_matrix.times(vec4(-context.width * 0.00027, currY, -0.6, 0))
             this.shapes.powerup_throw.draw(context, program_state, Mat4.translation(...lookDirection).times(mat).times(Mat4.scale(0.9, 0.9, 0.9)), this.materials.text )
             currY -= 0.03
             if (this.shootCooldownTier != this.shootCooldownPrices.length)
             {
                 this.shapes.throw_price.set_string("Next Tier:$" + String(this.shootCooldownPrices[this.shootCooldownTier]), context.context)
-                lookDirection = camera_matrix.times(vec4(context.width * 0.00022, currY, -0.6, 0))
+                lookDirection = camera_matrix.times(vec4(-context.width * 0.00025, currY, -0.6, 0))
                 this.shapes.throw_price.draw(context, program_state, Mat4.translation(...lookDirection).times(mat).times(Mat4.scale(0.8, 0.8, 0.8)), this.materials.text )
                 currY -= 0.03;
             }

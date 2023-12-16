@@ -7,8 +7,8 @@ import {tiny} from './tiny-graphics.js';
 
 // Pull these names into this module's scope for convenience.
 const {color, Scene} = tiny;
-const width = Math.max(window.innerWidth * 0.95, 1200);
-const height = Math.max(window.innerHeight * 0.95, 600);
+const width = Math.min(Math.max(window.innerWidth * 0.95, 1200), 1700);
+const height = Math.min(Math.max(window.innerHeight * 0.95, 600), 850);
 
 export const widgets = {};
 
